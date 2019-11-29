@@ -5,14 +5,17 @@ import PackageDescription
 
 let package = Package(
     name: "VaporMakeup",
+    platforms: [
+        .macOS(.v10_14),
+    ],
     products: [
         .library(
             name: "VaporMakeup",
             targets: ["VaporMakeup"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/MakeupStudio/Makeup.git", from: "0.1.1"),
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0-alpha.2"),
+        .package(url: "https://github.com/MakeupStudio/Makeup.git", from: "0.1.3"),
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0-beta"),
     ],
     targets: [
         .target(
