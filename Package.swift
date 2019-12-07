@@ -14,7 +14,7 @@ let package = Package(
             targets: ["VaporMakeup"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/MakeupStudio/Makeup.git", from: "0.1.3"),
+        .package(url: "https://github.com/MakeupStudio/Makeup.git", from: "0.2.0"),
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0-beta"),
     ],
     targets: [
