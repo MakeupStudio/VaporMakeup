@@ -6,16 +6,16 @@
 //  Copyright © 2019 Maxim Krouk. All rights reserved.
 //
 
-@_exported import Makeup
+import Makeup
 import Vapor
 
-extension HTML.NodeWrapper: ResponseEncodable where Element: ContentOfHtmlDocument {
+extension Node: ResponseEncodable {
     
     public func encodeResponse(for request: Request) -> EventLoopFuture<Response> {
         return request.eventLoop.makeSucceededFuture(
             Response(status: .ok,
                      headers: ["content-type": "text/html; charset=utf-8"],
-                     body: .init(string: document(content: self).render()))
+                     body: .init(string: document(content: HTML.NodeWrapper<HTML.Tag>(self)).render()))
         )
     }
     

@@ -1,12 +1,11 @@
-// swift-tools-version:5.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.2
 
 import PackageDescription
 
 let package = Package(
     name: "VaporMakeup",
     platforms: [
-        .macOS(.v10_14),
+        .macOS(.v10_15),
     ],
     products: [
         .library(
@@ -16,19 +15,23 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/MakeupStudio/Makeup.git",
-            .upToNextMajor(from: "0.2.2")
+            .branch("master")
         ),
         .package(
             url: "https://github.com/vapor/vapor.git",
-            from: "4.0.0-beta.3"
+            from: "4.0.0"
         ),
     ],
     targets: [
         .target(
             name: "VaporMakeup",
-            dependencies: ["Makeup", "Vapor"]),
+            dependencies: [
+                .product(name: "Makeup", package: "Makeup"),
+                .product(name: "Vapor", package: "vapor")
+            ]
+        ),
         .testTarget(
             name: "VaporMakeupTests",
-            dependencies: ["VaporMakeup"]),
+            dependencies: [.target(name: "VaporMakeup")]),
     ]
 )
