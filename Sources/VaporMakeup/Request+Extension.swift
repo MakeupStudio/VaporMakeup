@@ -16,7 +16,7 @@ public extension Request {
     }
     
     func view<Page: Markup>(_ page: Page) -> EventLoopFuture<Response> {
-        page._node.encodeResponse(for: self)
+        page.node.encodeResponse(for: self)
     }
     
 }
